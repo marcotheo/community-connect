@@ -38,6 +38,7 @@ const config = {
         destructive: "var(--destructive)",
         info: "var(--info)",
         surface: "var(--surface)",
+        input: "var(--input)",
       },
 
       borderRadius: {

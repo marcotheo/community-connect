@@ -65,6 +65,7 @@ ol {
 
     --radius: 0.5rem;
     --button-text-color: #6366f1;
+    --input: #9ca3af;
   }
 
   .dark {
@@ -92,7 +93,12 @@ ol {
 
     --radius: 0.5rem;
     --button-text-color: #6366f1;
+    --input: #4b5563;
   }
+}
+
+* {
+  background-color: inherit;
 }
 
 body {
