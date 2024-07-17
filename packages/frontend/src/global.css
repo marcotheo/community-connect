@@ -42,16 +42,16 @@ ol {
 @layer base {
   :root {
     /* Primary Colors */
-    --primary: 173.41, 80.39%, 40%;
-    --primary-foreground: 210 40% 98%;
+    --primary: #6366f1;
+    --primary-foreground: #818cf8;
 
     /* Secondary Colors */
-    --secondary: 51, 100%, 62%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: #f9f871;
+    --secondary-foreground: #f5f588;
 
     /* Neutral Colors */
-    --background: 0, 0%, 98%;
-    --surface: 0, 0%, 96%;
+    --background: hsl(0, 0%, 98%);
+    --surface: hsl(0, 0%, 95%);
 
     /* Font Colors */
     --header-color: black;
@@ -67,16 +67,16 @@ ol {
 
   .dark {
     /* Primary Colors */
-    --primary: 173.41, 80.39%, 40%;
-    --primary-foreground: 210 40% 98%;
+    --primary: #6366f1;
+    --primary-foreground: #818cf8;
 
     /* Secondary Colors */
-    --secondary: 51, 100%, 62%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: #f9f871;
+    --secondary-foreground: #f5f588;
 
     /* Neutral Colors */
-    --background: 215, 27.91%, 16.86%;
-    --surface: 216.92, 19.12%, 26.67%;
+    --background: #09090b;
+    --surface: #18181b;
 
     /* Font Colors */
     --header-color: #e5e7eb;
@@ -89,6 +89,10 @@ ol {
 
     --radius: 0.5rem;
   }
+}
+
+body {
+  background-color: var(--background);
 }
 
 h1,

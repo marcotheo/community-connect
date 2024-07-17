@@ -26,18 +26,17 @@ const config = {
 
       colors: {
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
         },
         success: "var(--success)",
         destructive: "var(--destructive)",
         info: "var(--info)",
-        background: "hsl(var(--background))",
-        surface: "hsl(var(--surface))",
+        surface: "var(--surface)",
       },
 
       borderRadius: {
