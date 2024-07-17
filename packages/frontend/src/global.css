@@ -77,14 +77,6 @@ ol {
     --background: 215, 27.91%, 16.86%;
     --surface: 216.92, 19.12%, 26.67%;
 
-    /* Functional Colors */
-    --success: 0 84.2% 60.2%;
-    --success-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --info: 0 84.2% 60.2%;
-    --info-foreground: 0 0% 98%;
-
     --radius: 0.5rem;
   }
 }
