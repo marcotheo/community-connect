@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #d4cdcd;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(153, 153, 153);
+  border-radius: 14px;
+  border: 1px solid rgb(153, 153, 153);
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ul,
+ol {
+  padding: 0 1rem;
+}
+
+@layer base {
+  :root {
+    /* Primary Colors */
+    --primary: 173.41, 80.39%, 40%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary Colors */
+    --secondary: 51, 100%, 62%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    /* Neutral Colors */
+    --background: white;
+    --surface: white;
+
+    /* Functional Colors */
+    --success: 0 84.2% 60.2%;
+    --success-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --info: 0 84.2% 60.2%;
+    --info-foreground: 0 0% 98%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Primary Colors */
+    --primary: 173.41, 80.39%, 40%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary Colors */
+    --secondary: 51, 100%, 62%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    /* Neutral Colors */
+    --background: 215, 27.91%, 16.86%;
+    --surface: 216.92, 19.12%, 26.67%;
+
+    /* Functional Colors */
+    --success: 0 84.2% 60.2%;
+    --success-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --info: 0 84.2% 60.2%;
+    --info-foreground: 0 0% 98%;
+
+    --radius: 0.5rem;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Quicksand", sans-serif;
+}
+
+p,
+span {
+  font-family: "Manrope", sans-serif;
+}
