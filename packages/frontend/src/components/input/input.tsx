@@ -3,15 +3,16 @@ import { cn } from "~/common/utils";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   variant?: "default";
+  errorMsg?: string;
   label: string;
 }
 
 export default component$<InputProps>(
-  ({ variant = "default", label, ...props }) => {
+  ({ variant = "default", label, errorMsg, ...props }) => {
     const variants = {
       default: cn(
         "bg-transparent z-[10] px-[10px]",
-        "border-[1px] border-input hover:border-primary",
+        "border-[1px] hover:border-primary",
         "focus:border-primary focus-visible:border-transparent",
         "focus-visible:ring-2 focus-visible:ring-primary",
       ),
@@ -27,6 +28,7 @@ export default component$<InputProps>(
               "py-2 peer",
               "font-primary rounded-sm",
               "outline-none duration-100 ease-out",
+              !!errorMsg ? "border-destructive" : "border-input",
               variants[variant],
               props.class,
             )}
@@ -34,7 +36,7 @@ export default component$<InputProps>(
           <p
             class={cn(
               "absolute top-[8px] px-1 ml-[10px]",
-              "text-input pointer-events-none",
+              "text-input text-[0.7em] pointer-events-none",
               "duration-100 ease-out",
               "translate-x-[-3px] translate-y-[-17px]",
               "peer-placeholder-shown:text-[1em]", // default state
@@ -46,6 +48,7 @@ export default component$<InputProps>(
             {label}
           </p>
         </div>
+        <p class="text-destructive text-xs">{errorMsg}</p>
       </div>
     );
   },
