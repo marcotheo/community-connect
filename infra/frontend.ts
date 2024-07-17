@@ -60,9 +60,9 @@ export const frontend = () => {
       allowedMethods: ["GET", "HEAD", "OPTIONS"],
       cachedMethods: ["GET", "HEAD", "OPTIONS"],
       forwardedValues: {
-        queryString: false,
+        queryString: true,
         cookies: {
-          forward: "none",
+          forward: "all",
         },
       },
       compress: true,
