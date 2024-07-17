@@ -28,6 +28,7 @@ const config = {
         primary: {
           DEFAULT: "var(--primary)",
           foreground: "var(--primary-foreground)",
+          soft: "var(--primary-soft)",
         },
         secondary: {
           DEFAULT: "var(--secondary)",

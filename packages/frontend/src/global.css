@@ -44,6 +44,7 @@ ol {
     /* Primary Colors */
     --primary: #6366f1;
     --primary-foreground: #818cf8;
+    --primary-soft: rgba(99, 102, 241, 0.2);
 
     /* Secondary Colors */
     --secondary: #f9f871;
@@ -63,12 +64,14 @@ ol {
     --info: #3b82f6;
 
     --radius: 0.5rem;
+    --button-text-color: #6366f1;
   }
 
   .dark {
     /* Primary Colors */
     --primary: #6366f1;
     --primary-foreground: #818cf8;
+    --primary-soft: rgba(99, 102, 241, 0.2);
 
     /* Secondary Colors */
     --secondary: #f9f871;
@@ -88,6 +91,7 @@ ol {
     --info: #3b82f6;
 
     --radius: 0.5rem;
+    --button-text-color: #6366f1;
   }
 }
 
@@ -106,4 +110,8 @@ p,
 span {
   font-family: "Manrope", sans-serif;
   color: var(--text-color);
+}
+
+button {
+  color: var(--button-text-color);
 }
