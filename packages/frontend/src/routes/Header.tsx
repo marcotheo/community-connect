@@ -58,13 +58,7 @@ const ToggleDarkMode = component$(() => {
 
 export default component$(() => {
   return (
-    <div
-      class={cn(
-        "flex justify-between",
-        "w-full py-2",
-        "border-b border-b-gray-500",
-      )}
-    >
+    <div class={cn("flex justify-between", "w-full py-2")}>
       <div />
       <ToggleDarkMode />
     </div>
