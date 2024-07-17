@@ -50,8 +50,8 @@ ol {
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     /* Neutral Colors */
-    --background: white;
-    --surface: white;
+    --background: 0, 0%, 98%;
+    --surface: 0, 0%, 96%;
 
     --radius: 0.5rem;
   }
