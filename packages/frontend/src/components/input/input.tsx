@@ -18,7 +18,7 @@ export default component$<InputProps>(
     };
 
     return (
-      <div class="pt-2">
+      <div class="pt-3">
         <div class="relative w-fit">
           <input
             {...props}
