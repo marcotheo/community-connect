@@ -17,7 +17,7 @@ interface DropDownMenuProps extends HTMLAttributes<HTMLMenuElement> {
 }
 
 export default component$<DropDownMenuProps>(({ title, ...props }) => {
-  const isOpen = useSignal(false);
+  const isOpen = useSignal<boolean | null>(null);
   const dropdownRef = useSignal<HTMLDivElement>();
   const dropDownContentRef = useSignal<HTMLDivElement>();
 
@@ -40,6 +40,7 @@ export default component$<DropDownMenuProps>(({ title, ...props }) => {
     "click",
     $((event: any) => {
       if (
+        isOpen.value &&
         dropdownRef.value &&
         !dropdownRef.value.contains(event.target as Node)
       ) {
@@ -67,9 +68,11 @@ export default component$<DropDownMenuProps>(({ title, ...props }) => {
           "mt-1 py-1",
           "shadow-md rounded-md",
           "border-[0.5px] border-popup",
-          isOpen.value
-            ? "animate-fade-in-slide z-50"
-            : "animate-fade-out-slide z-[-10]",
+          isOpen.value === null
+            ? "opacity-0"
+            : isOpen.value
+              ? "animate-fade-in-slide z-50"
+              : "animate-fade-out-slide z-[-10]",
         )}
       >
         <Slot name="label" />
@@ -81,7 +84,7 @@ export default component$<DropDownMenuProps>(({ title, ...props }) => {
   );
 });
 
-const ChevronDown = component$<{ isOpen: boolean }>(({ isOpen }) => {
+const ChevronDown = component$<{ isOpen: boolean | null }>(({ isOpen }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -106,15 +109,20 @@ const ChevronDown = component$<{ isOpen: boolean }>(({ isOpen }) => {
 
 const DropDownMenuTrigger = component$<{
   title: string;
-  isOpen: Signal<boolean>;
+  isOpen: Signal<boolean | null>;
   onToggle: QRL<() => void>;
 }>(({ isOpen, title, onToggle }) => {
+  const onTrigger = $(() => {
+    if (isOpen.value === null) isOpen.value = true;
+    else isOpen.value = !isOpen.value;
+  });
+
   return (
     <>
       <Button
         class="peer flex gap-3 items-center"
         variant="outline"
-        onClick$={[$(() => (isOpen.value = !isOpen.value)), onToggle]}
+        onClick$={[onTrigger, onToggle]}
       >
         {title} <ChevronDown isOpen={isOpen.value} />
       </Button>
