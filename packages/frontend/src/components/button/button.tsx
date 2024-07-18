@@ -26,7 +26,7 @@ export default component$<ButtonProps>(
         {...props}
         class={cn(
           "font-primary",
-          "rounded-sm",
+          "rounded-md",
           "duration-150 ease-linear",
           sizes[size],
           variants[variant],
