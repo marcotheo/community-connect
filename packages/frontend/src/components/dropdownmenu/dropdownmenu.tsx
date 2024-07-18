@@ -67,7 +67,7 @@ const ChevronDown = component$<{ isOpen: boolean }>(({ isOpen }) => {
       stroke="currentColor"
       class={cn(
         "size-4 bg-transparent",
-        "duration-500 ease-out",
+        "duration-300 ease-out",
         isOpen ? "rotate-180" : "",
       )}
     >
@@ -88,6 +88,7 @@ const DropDownMenuTrigger = component$<{
     <>
       <Button
         class="peer flex gap-3 items-center"
+        variant="outline"
         onClick$={() => (isOpen.value = !isOpen.value)}
       >
         {title} <ChevronDown isOpen={isOpen.value} />
