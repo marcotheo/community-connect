@@ -26,11 +26,14 @@ export default component$<DropDownMenuProps>(({ title, ...props }) => {
 
     const wrapperRect = dropdownRef.value.getBoundingClientRect();
     const dropdownRect = dropDownContentRef.value.getBoundingClientRect();
-    const overflow = dropdownRect.bottom > window.innerHeight;
+    const overflowY = dropdownRect.bottom > window.innerHeight;
+    const overflowR = dropdownRect.right > window.innerWidth;
 
-    if (overflow) {
+    if (overflowR)
+      dropDownContentRef.value.style.right = `${dropdownRect.right - window.innerWidth}px`;
+
+    if (overflowY)
       dropDownContentRef.value.style.marginTop = `-${wrapperRect.height + dropdownRect.height}px`;
-    }
   });
 
   useOnDocument(
