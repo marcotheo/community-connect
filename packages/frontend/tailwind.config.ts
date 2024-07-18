@@ -84,6 +84,26 @@ const config = {
             transform: "translateY(-10px)",
           },
         },
+        "fade-in-scale": {
+          "0%": {
+            opacity: "0",
+            transform: "scale(0.90)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+        },
+        "fade-out-scale": {
+          "0%": {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "scale(0.95)",
+          },
+        },
       },
 
       animation: {
@@ -94,6 +114,8 @@ const config = {
         slideDown: "slideDown 0.5s ease-out",
         "fade-in-slide": "fade-in-slide 0.1s ease-out forwards",
         "fade-out-slide": "fade-out-slide 0.1s ease-out forwards",
+        "fade-in-scale": "fade-in-scale 0.2s ease-out forwards",
+        "fade-out-scale": "fade-out-scale 0.2s ease-out forwards",
       },
     },
   },
