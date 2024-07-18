@@ -6,6 +6,7 @@ import Menu, {
   DropDownMenuLabel,
   DropDownSeparator,
 } from "~/components/dropdownmenu/dropdownmenu";
+import Dialog, { DialogTrigger } from "~/components/dialog/dialog";
 import Heading from "~/components/heading/heading";
 import Button from "~/components/button/button";
 import Input from "~/components/input/input";
@@ -22,7 +23,7 @@ export default component$(() => {
                 <Heading>Headings</Heading>
                 <div class="w-full h-[1px] bg-gray-500" />
               </div>
-              <div class="flex gap-5 items-end">
+              <div class="flex flex-wrap md:grid-cols-6 gap-5 items-end">
                 <Heading size="xxl">XXL</Heading>
                 <Heading size="xl">XL</Heading>
                 <Heading size="lg">Large</Heading>
@@ -37,19 +38,19 @@ export default component$(() => {
                 <Heading>Buttons</Heading>
                 <div class="w-full h-[1px] bg-gray-500" />
               </div>
-              <div class="flex gap-5">
+              <div class="flex flex-col md:flex-row gap-5">
                 <Button>Default</Button>
                 <Button variant="ghost">Ghost</Button>
                 <Button variant="outline">Outline</Button>
               </div>
             </div>
 
-            <div>
+            <div class="w-full">
               <div class="flex gap-2 items-center pb-3">
                 <Heading>Inputs</Heading>
                 <div class="w-full h-[1px] bg-gray-500" />
               </div>
-              <div class="flex gap-5">
+              <div class="flex flex-col w-full md:w-96 md:flex-row md:gap-5">
                 <Input label="First Name" />
                 <Input label="First Name" variant="underline" />
               </div>
@@ -76,9 +77,9 @@ export default component$(() => {
                 </Menu>
 
                 <Menu title="Menu">
-                  <div q:slot="label">
-                    <DropDownMenuLabel>Sample Menu</DropDownMenuLabel>
-                  </div>
+                  <DropDownMenuLabel q:slot="label">
+                    Sample Menu
+                  </DropDownMenuLabel>
                   <DropDownMenuItem>Item 1</DropDownMenuItem>
                   <DropDownMenuItem>Item 2</DropDownMenuItem>
                   <DropDownMenuItem>Item 3</DropDownMenuItem>
@@ -87,6 +88,20 @@ export default component$(() => {
                   <DropDownMenuItem>Item 2</DropDownMenuItem>
                   <DropDownMenuItem>Item 3</DropDownMenuItem>
                 </Menu>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex gap-2 items-center pb-3">
+                <Heading>Dialog</Heading>
+                <div class="w-full h-[1px] bg-gray-500" />
+              </div>
+
+              <div class="flex justify-between gap-5">
+                <Dialog>
+                  <DialogTrigger q:slot="trigger">Open1</DialogTrigger>
+                  <div>asdasdasd</div>
+                </Dialog>
               </div>
             </div>
           </div>

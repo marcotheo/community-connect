@@ -25,13 +25,13 @@ export default component$<InputProps>(
     };
 
     return (
-      <div class="pt-3">
-        <div class="relative w-fit">
+      <div class="pt-3 w-full">
+        <div class="relative w-full">
           <input
             {...props}
             placeholder=""
             class={cn(
-              "peer z-[10] py-2",
+              "peer z-[10] py-2 w-full",
               "font-primary",
               "outline-none duration-100 ease-out",
               !!errorMsg ? "border-destructive" : "border-input",
