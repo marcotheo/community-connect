@@ -37,14 +37,10 @@ const config = {
         success: "var(--success)",
         destructive: "var(--destructive)",
         info: "var(--info)",
+        background: "var(--background)",
         surface: "var(--surface)",
         input: "var(--input)",
-      },
-
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        popup: "var(--popup)",
       },
 
       keyframes: {
@@ -68,6 +64,16 @@ const config = {
           "0%": { transform: "translateY(-100%)" },
           "100%": { transform: "translateY(0)" },
         },
+        "fade-in-slide": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
       },
 
       animation: {
@@ -76,6 +82,7 @@ const config = {
         fadeIn: "fadeIn 0.5s ease-in-out",
         expand: "expand 0.3s ease-out",
         slideDown: "slideDown 0.5s ease-out",
+        "fade-in-slide": "fade-in-slide 0.5s ease-out forwards",
       },
     },
   },

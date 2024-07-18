@@ -63,9 +63,9 @@ ol {
     --destructive: #ef4444;
     --info: #3b82f6;
 
-    --radius: 0.5rem;
     --button-text-color: #6366f1;
     --input: #9ca3af;
+    --popup: #d4d4d8;
   }
 
   .dark {
@@ -79,8 +79,8 @@ ol {
     --secondary-foreground: #f5f588;
 
     /* Neutral Colors */
-    --background: #09090b;
-    --surface: #18181b;
+    --background: #18181b;
+    --surface: #27272a;
 
     /* Font Colors */
     --header-color: #e5e7eb;
@@ -91,9 +91,9 @@ ol {
     --destructive: #ef4444;
     --info: #3b82f6;
 
-    --radius: 0.5rem;
     --button-text-color: #6366f1;
     --input: #4b5563;
+    --popup: #52525b;
   }
 }
 
