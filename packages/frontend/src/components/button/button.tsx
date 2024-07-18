@@ -1,7 +1,7 @@
 import { component$, Slot, ButtonHTMLAttributes } from "@builder.io/qwik";
 import { cn } from "~/common/utils";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "lg" | "md" | "sm" | "default";
   variant?: "outline" | "ghost" | "default";
 }
