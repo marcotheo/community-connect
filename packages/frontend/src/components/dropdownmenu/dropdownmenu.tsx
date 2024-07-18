@@ -7,7 +7,6 @@ import {
   $,
   Signal,
   QRL,
-  useTask$,
 } from "@builder.io/qwik";
 import Button from "../button/button";
 import { cn } from "~/common/utils";
