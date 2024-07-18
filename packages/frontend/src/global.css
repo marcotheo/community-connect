@@ -7,7 +7,7 @@
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--secondary) var(--primary);
+  scrollbar-color: #d4cdcd;
 }
 
 /* Chrome, Edge, and Safari */

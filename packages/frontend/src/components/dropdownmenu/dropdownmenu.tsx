@@ -43,13 +43,14 @@ export default component$<DropDownMenuProps>(({ title, ...props }) => {
           "bg-surface",
           "absolute z-50",
           "mt-1 py-1",
-          "shadow-md rounded-md overflow-hidden",
+          "shadow-md rounded-md",
           "border-[0.5px] border-popup",
           "animate-fade-in-slide duration-100",
           isOpen.value ? "block" : "hidden",
         )}
       >
-        <div class="flex flex-col overflow-hidden">
+        <Slot name="label" />
+        <div class="flex flex-col overflow-auto max-h-56">
           <Slot />
         </div>
       </div>
@@ -132,5 +133,5 @@ export const DropDownMenuItem = component$(() => {
 });
 
 export const DropDownSeparator = component$(() => (
-  <div class="h-[0.5px] w-full bg-popup" />
+  <hr class="h-[0.5px] w-full border-popup z-50" />
 ));
