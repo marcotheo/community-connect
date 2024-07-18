@@ -68,7 +68,7 @@ export default component$<DropDownMenuProps>(({ title, ...props }) => {
           "shadow-md rounded-md",
           "border-[0.5px] border-popup",
           isOpen.value === null
-            ? "opacity-0"
+            ? "opacity-0 z-[-10]"
             : isOpen.value
               ? "animate-fade-in-slide z-50"
               : "animate-fade-out-slide z-[-10]",
