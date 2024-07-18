@@ -21,7 +21,7 @@ const config = {
     extend: {
       fontFamily: {
         primary: "Manrope",
-        secondary: "Roboto Slab",
+        secondary: "Quicksand",
       },
 
       colors: {
