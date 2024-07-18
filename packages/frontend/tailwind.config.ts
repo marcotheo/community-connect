@@ -74,6 +74,16 @@ const config = {
             transform: "translateY(0)",
           },
         },
+        "fade-out-slide": {
+          "0%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
+        },
       },
 
       animation: {
@@ -82,7 +92,8 @@ const config = {
         fadeIn: "fadeIn 0.5s ease-in-out",
         expand: "expand 0.3s ease-out",
         slideDown: "slideDown 0.5s ease-out",
-        "fade-in-slide": "fade-in-slide 0.5s ease-out forwards",
+        "fade-in-slide": "fade-in-slide 0.1s ease-out forwards",
+        "fade-out-slide": "fade-out-slide 0.1s ease-out forwards",
       },
     },
   },

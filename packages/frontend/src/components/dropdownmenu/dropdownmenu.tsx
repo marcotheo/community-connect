@@ -6,6 +6,8 @@ import {
   useOnDocument,
   $,
   Signal,
+  QRL,
+  useTask$,
 } from "@builder.io/qwik";
 import Button from "../button/button";
 import { cn } from "~/common/utils";
@@ -17,6 +19,19 @@ interface DropDownMenuProps extends HTMLAttributes<HTMLMenuElement> {
 export default component$<DropDownMenuProps>(({ title, ...props }) => {
   const isOpen = useSignal(false);
   const dropdownRef = useSignal<HTMLDivElement>();
+  const dropDownContentRef = useSignal<HTMLDivElement>();
+
+  const onMenuToggle = $(() => {
+    if (!dropDownContentRef.value || !dropdownRef.value) return;
+
+    const wrapperRect = dropdownRef.value.getBoundingClientRect();
+    const dropdownRect = dropDownContentRef.value.getBoundingClientRect();
+    const overflow = dropdownRect.bottom > window.innerHeight;
+
+    if (overflow) {
+      dropDownContentRef.value.style.marginTop = `-${wrapperRect.height + dropdownRect.height}px`;
+    }
+  });
 
   useOnDocument(
     "click",
@@ -36,17 +51,22 @@ export default component$<DropDownMenuProps>(({ title, ...props }) => {
       class={cn("font-secondary font-medium", "group", props.class)}
       ref={dropdownRef}
     >
-      <DropDownMenuTrigger title={title} isOpen={isOpen} />
+      <DropDownMenuTrigger
+        title={title}
+        isOpen={isOpen}
+        onToggle={onMenuToggle}
+      />
 
       <div
+        ref={dropDownContentRef}
         class={cn(
-          "bg-surface",
-          "absolute z-50",
+          "absolute bg-surface",
           "mt-1 py-1",
           "shadow-md rounded-md",
           "border-[0.5px] border-popup",
-          "animate-fade-in-slide duration-100",
-          isOpen.value ? "block" : "hidden",
+          isOpen.value
+            ? "animate-fade-in-slide z-50"
+            : "animate-fade-out-slide z-[-10]",
         )}
       >
         <Slot name="label" />
@@ -84,13 +104,14 @@ const ChevronDown = component$<{ isOpen: boolean }>(({ isOpen }) => {
 const DropDownMenuTrigger = component$<{
   title: string;
   isOpen: Signal<boolean>;
-}>(({ isOpen, title }) => {
+  onToggle: QRL<() => void>;
+}>(({ isOpen, title, onToggle }) => {
   return (
     <>
       <Button
         class="peer flex gap-3 items-center"
         variant="outline"
-        onClick$={() => (isOpen.value = !isOpen.value)}
+        onClick$={[$(() => (isOpen.value = !isOpen.value)), onToggle]}
       >
         {title} <ChevronDown isOpen={isOpen.value} />
       </Button>
