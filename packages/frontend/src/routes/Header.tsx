@@ -1,4 +1,5 @@
 import { component$, useSignal } from "@builder.io/qwik";
+import Image from "~/media/logo.png?jsx";
 import { cn } from "~/common/utils";
 
 const ToggleDarkMode = component$(() => {
@@ -8,7 +9,7 @@ const ToggleDarkMode = component$(() => {
     <button
       class={cn(
         "p-3 rounded-md cursor-pointer",
-        "transition-[background-color] duration-150 ease-linear",
+        "transition-[background-color] duration-150 ease-linear text-text",
         isDark.value ? "hover:bg-surface" : "hover:bg-gray-200",
       )}
       onClick$={() => {
@@ -28,7 +29,7 @@ const ToggleDarkMode = component$(() => {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="size-6 bg-transparent"
+          class="size-10 bg-transparent"
         >
           <path
             stroke-linecap="round"
@@ -43,7 +44,7 @@ const ToggleDarkMode = component$(() => {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="size-6 bg-transparent"
+          class="size-10 bg-transparent"
         >
           <path
             stroke-linecap="round"
@@ -58,8 +59,10 @@ const ToggleDarkMode = component$(() => {
 
 export default component$(() => {
   return (
-    <div class={cn("flex justify-between", "w-full py-2")}>
-      <div />
+    <div class={cn("flex justify-between items-center", "w-full py-5")}>
+      <div class="w-14 h-14">
+        <Image />
+      </div>
       <ToggleDarkMode />
     </div>
   );
