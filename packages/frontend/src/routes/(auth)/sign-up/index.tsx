@@ -1,14 +1,28 @@
 import { DocumentHead } from "@builder.io/qwik-city";
+import Heading from "~/components/heading/heading";
+import Button from "~/components/button/button";
 import { component$ } from "@builder.io/qwik";
 import Input from "~/components/input/input";
 import { cn } from "~/common/utils";
 
 export default component$(() => {
   return (
-    <div>
-      <div class={cn("flex flex-col gap-5", "w-[500px] h-[200px] border p-5")}>
-        <Input label="Email" variant="underline" />
-        <Input type="password" label="Password" variant="underline" />
+    <div class="flex h-full w-full justify-center">
+      <div class={cn("flex flex-col gap-5", "w-[500px] mt-[70px]")}>
+        <Heading>Sign Up</Heading>
+        <div class=" flex flex-col gap-5">
+          <Input label="Email" variant="filled" />
+          <Input type="password" label="Password" variant="filled" />
+          <Input type="password" label="Confirm Password" variant="filled" />
+
+          <p>
+            By registering, you agree to the processing of your personal data by
+            Genesis Oppurtunities as described in the{" "}
+            <span class="text-primary">Privacy Policy</span>.{" "}
+          </p>
+
+          <Button>Sign up</Button>
+        </div>
       </div>
     </div>
   );

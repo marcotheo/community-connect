@@ -1,6 +1,7 @@
 import DarkMode from "~/components/dark-mode/dark-mode";
 import Button from "~/components/button/button";
 import { component$ } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
 import Image from "~/media/logo.png?jsx";
 import { cn } from "~/common/utils";
 
@@ -11,10 +12,15 @@ export default component$(() => {
         <Image />
       </div>
       <div class="flex gap-5 items-center">
-        <Button variant="outline" size="md">
-          Sign In
-        </Button>
-        <Button size="md">Sign Up</Button>
+        <Link href="/sign-in">
+          {" "}
+          <Button variant="outline" size="md">
+            Sign In
+          </Button>
+        </Link>
+        <Link href="/sign-up">
+          <Button size="md">Sign Up</Button>
+        </Link>
         <DarkMode />
       </div>
     </div>
