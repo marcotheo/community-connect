@@ -2,7 +2,7 @@ import { component$, InputHTMLAttributes } from "@builder.io/qwik";
 import { cn } from "~/common/utils";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  variant?: "underline" | "default";
+  variant?: "underline" | "filled" | "default";
   errorMsg?: string;
   label: string;
 }
@@ -10,18 +10,42 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export default component$<InputProps>(
   ({ variant = "default", label, errorMsg, ...props }) => {
     const inputVariants = {
-      underline: cn("bg-transparent border-b-[2px] border-input"),
+      filled: cn(
+        "bg-zinc-800 px-[10px] pt-5 pb-1",
+        "border-b-[2px] border-r-md border-input",
+        "rounded-t-sm",
+      ),
+      underline: cn("bg-transparent py-2 border-b-[2px] border-input"),
       default: cn(
-        "bg-transparent rounded-md px-[10px]",
+        "bg-transparent rounded-md px-[10px] py-2",
         "border-[1px] hover:border-primary",
         "focus:border-primary focus-visible:border-transparent",
         "focus-visible:ring-2 focus-visible:ring-primary",
       ),
     };
 
+    const middleVariant = {
+      filled: "peer-focus:scale-100",
+      underline: "peer-focus:scale-100",
+      default: "hidden",
+    };
+
     const labelVariants = {
-      underline: "",
-      default: "ml-[10px]",
+      filled: cn(
+        "top-[12px] ml-[10px] bg-transparent",
+        "translate-x-[-3px] translate-y-[-12px]",
+        "peer-focus:translate-x-[-3px] peer-focus:translate-y-[-12px]",
+      ),
+      underline: cn(
+        "top-[8px]",
+        "translate-x-[-3px] translate-y-[-17px]",
+        "peer-focus:translate-x-[-3px] peer-focus:translate-y-[-17px]",
+      ),
+      default: cn(
+        "top-[8px] ml-[10px]",
+        "translate-x-[-3px] translate-y-[-17px]",
+        "peer-focus:translate-x-[-3px] peer-focus:translate-y-[-17px]",
+      ),
     };
 
     return (
@@ -31,7 +55,7 @@ export default component$<InputProps>(
             {...props}
             placeholder=""
             class={cn(
-              "peer z-[10] py-2 w-full",
+              "peer z-[10] w-full",
               "font-primary",
               "outline-none duration-100 ease-out",
               !!errorMsg ? "border-destructive" : "border-input",
@@ -45,19 +69,17 @@ export default component$<InputProps>(
               "w-full h-[2px]",
               "duration-300",
               !!errorMsg ? "scale-1 bg-destructive" : "scale-0 bg-primary",
-              variant === "underline" ? "peer-focus:scale-100" : "hidden",
+              middleVariant[variant],
             )}
           />
           <p
             class={cn(
-              "absolute top-[8px] px-1",
-              "text-input text-[0.7em] pointer-events-none",
+              "absolute px-1",
+              "text-input text-[0.8em] pointer-events-none",
               "duration-100 ease-out",
-              "translate-x-[-3px] translate-y-[-17px]",
               "peer-placeholder-shown:text-[1em]", // default state
               "peer-placeholder-shown:translate-x-[0] peer-placeholder-shown:translate-y-[0]", // default state
-              "peer-focus:translate-x-[-3px] peer-focus:translate-y-[-17px]",
-              "peer-focus:z-[10] peer-focus:text-[0.7em]",
+              "peer-focus:z-[10] peer-focus:text-[0.8em]",
               labelVariants[variant],
             )}
           >

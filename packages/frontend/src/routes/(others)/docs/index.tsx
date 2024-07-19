@@ -55,9 +55,10 @@ export default component$(() => {
                 <Heading>Inputs</Heading>
                 <div class="w-full h-[1px] bg-gray-500" />
               </div>
-              <div class="flex flex-col w-full md:w-96 md:flex-row md:gap-5">
-                <Input label="First Name" />
-                <Input label="First Name" variant="underline" />
+              <div class="flex flex-col items-end w-full md:w-[50rem] md:flex-row md:gap-5">
+                <Input label="Outlined" />
+                <Input label="Underline" variant="underline" />
+                <Input label="Filled" variant="filled" />
               </div>
             </div>
 
