@@ -12,7 +12,7 @@ export default component$<InputProps>(
     const inputVariants = {
       underline: cn("bg-transparent border-b-[2px] border-input"),
       default: cn(
-        "bg-transparent rounded-sm px-[10px]",
+        "bg-transparent rounded-md px-[10px]",
         "border-[1px] hover:border-primary",
         "focus:border-primary focus-visible:border-transparent",
         "focus-visible:ring-2 focus-visible:ring-primary",
