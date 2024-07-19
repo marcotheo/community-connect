@@ -90,6 +90,7 @@ const config = {
             transform: "scale(0.90)",
           },
           "100%": {
+            zIndex: "50",
             opacity: "1",
             transform: "scale(1)",
           },
