@@ -2,7 +2,7 @@ import { component$, useSignal } from "@builder.io/qwik";
 import { cn } from "~/common/utils";
 
 const ToggleDarkMode = component$(() => {
-  const isDark = useSignal(false);
+  const isDark = useSignal(true);
 
   return (
     <button
@@ -28,7 +28,7 @@ const ToggleDarkMode = component$(() => {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="size-6"
+          class="size-6 bg-transparent"
         >
           <path
             stroke-linecap="round"
@@ -43,7 +43,7 @@ const ToggleDarkMode = component$(() => {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="size-6"
+          class="size-6 bg-transparent"
         >
           <path
             stroke-linecap="round"
