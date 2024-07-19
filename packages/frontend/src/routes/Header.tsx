@@ -1,5 +1,5 @@
-import { component$, useSignal } from "@builder.io/qwik";
 import DarkMode from "~/components/dark-mode/dark-mode";
+import { component$ } from "@builder.io/qwik";
 import Image from "~/media/logo.png?jsx";
 import { cn } from "~/common/utils";
 
