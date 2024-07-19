@@ -15,8 +15,15 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 
 export default component$(() => {
   return (
-    <div class="h-screen">
-      <Slot />
+    <div class="h-screen flex flex-col">
+      <div class="px-5 sm:px-12 2xl:px-72">
+        <Header />
+      </div>
+      <div class="grow overflow-auto">
+        <div class="h-full px-5 sm:px-12 2xl:px-72">
+          <Slot />
+        </div>
+      </div>
     </div>
   );
 });
