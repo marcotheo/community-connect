@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 * {
-  scrollbar-width: thin;
+  scrollbar-width: 5px;
   scrollbar-color: #d4cdcd;
 }
 
@@ -79,11 +79,11 @@ ol {
     --secondary-foreground: #f5f588;
 
     /* Neutral Colors */
-    --background: #18181b;
-    --surface: #27272a;
+    --background: #1a1a1a;
+    --surface: #242424;
 
     /* Font Colors */
-    --header-color: #e5e7eb;
+    --header-color: #9ca3af;
     --text-color: #9ca3af;
 
     /* Functional Colors */
@@ -103,6 +103,7 @@ ol {
 
 body {
   background-color: var(--background);
+  overflow: hidden;
 }
 
 h1,

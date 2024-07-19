@@ -41,6 +41,7 @@ const config = {
         surface: "var(--surface)",
         input: "var(--input)",
         popup: "var(--popup)",
+        text: "var(--text-color)",
       },
 
       keyframes: {
