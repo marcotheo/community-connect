@@ -114,7 +114,8 @@ h3 {
 }
 
 p,
-span {
+span,
+div {
   font-family: "Manrope", sans-serif;
   color: var(--text-color);
 }

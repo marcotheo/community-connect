@@ -7,7 +7,7 @@ const ToggleDarkMode = component$(() => {
   return (
     <button
       class={cn(
-        "p-3 rounded-sm cursor-pointer",
+        "p-3 rounded-md cursor-pointer",
         "transition-[background-color] duration-150 ease-linear",
         isDark.value ? "hover:bg-surface" : "hover:bg-gray-200",
       )}
