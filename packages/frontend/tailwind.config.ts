@@ -99,9 +99,12 @@ const config = {
             opacity: "1",
             transform: "scale(1)",
           },
-          "100%": {
+          "90%": {
             opacity: "0",
             transform: "scale(0.95)",
+          },
+          "100%": {
+            zIndex: "-10",
           },
         },
       },
@@ -115,7 +118,7 @@ const config = {
         "fade-in-slide": "fade-in-slide 0.1s ease-out forwards",
         "fade-out-slide": "fade-out-slide 0.1s ease-out forwards",
         "fade-in-scale": "fade-in-scale 0.2s ease-out forwards",
-        "fade-out-scale": "fade-out-scale 0.2s ease-out forwards",
+        "fade-out-scale": "fade-out-scale 0.3s ease-out forwards",
       },
     },
   },
