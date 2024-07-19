@@ -42,6 +42,7 @@ const config = {
         input: "var(--input)",
         popup: "var(--popup)",
         text: "var(--text-color)",
+        ghost: "var(--ghost)",
       },
 
       keyframes: {

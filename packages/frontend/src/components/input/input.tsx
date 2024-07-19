@@ -11,7 +11,7 @@ export default component$<InputProps>(
   ({ variant = "default", label, errorMsg, ...props }) => {
     const inputVariants = {
       filled: cn(
-        "bg-zinc-800 px-[10px] pt-5 pb-1",
+        "bg-ghost px-[10px] pt-5 pb-1",
         "border-b-[2px] border-r-md border-input",
         "rounded-t-sm",
       ),

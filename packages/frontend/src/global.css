@@ -66,6 +66,7 @@ ol {
     --button-text-color: #6366f1;
     --input: #9ca3af;
     --popup: #d4d4d8;
+    --ghost: #d4d4d8;
   }
 
   .dark {
@@ -94,6 +95,7 @@ ol {
     --button-text-color: #6366f1;
     --input: #4b5563;
     --popup: #52525b;
+    --ghost: #27272a;
   }
 }
 
