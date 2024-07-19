@@ -1,8 +1,7 @@
 import { component$, useSignal } from "@builder.io/qwik";
-import Image from "~/media/logo.png?jsx";
 import { cn } from "~/common/utils";
 
-const ToggleDarkMode = component$(() => {
+export default component$(() => {
   const isDark = useSignal(true);
 
   return (
@@ -54,16 +53,5 @@ const ToggleDarkMode = component$(() => {
         </svg>
       )}
     </button>
-  );
-});
-
-export default component$(() => {
-  return (
-    <div class={cn("flex justify-between items-center", "w-full py-5")}>
-      <div class="w-14 h-14">
-        <Image />
-      </div>
-      <ToggleDarkMode />
-    </div>
   );
 });

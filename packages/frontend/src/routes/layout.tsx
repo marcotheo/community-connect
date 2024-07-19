@@ -1,6 +1,6 @@
 import type { RequestHandler } from "@builder.io/qwik-city";
 import { component$, Slot } from "@builder.io/qwik";
-import Header from "./Header";
+import Header from "./(others)/Header";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -16,14 +16,7 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 export default component$(() => {
   return (
     <div>
-      <div class="px-5 sm:px-12 2xl:px-72">
-        <Header />
-      </div>
-      <div class="max-h-screen overflow-auto">
-        <div class="px-5 sm:px-12 2xl:px-72">
-          <Slot />
-        </div>
-      </div>
+      <Slot />
     </div>
   );
 });

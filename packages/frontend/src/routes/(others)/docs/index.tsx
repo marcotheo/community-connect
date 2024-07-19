@@ -183,6 +183,8 @@ export default component$(() => {
           </div>
 
           <br />
+          <br />
+          <br />
         </div>
       </div>
     </div>
