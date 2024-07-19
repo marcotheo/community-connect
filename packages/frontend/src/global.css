@@ -51,8 +51,8 @@ ol {
     --secondary-foreground: #f5f588;
 
     /* Neutral Colors */
-    --background: hsl(0, 0%, 98%);
-    --surface: hsl(0, 0%, 95%);
+    --background: #fafafa;
+    --surface: #ffffff;
 
     /* Font Colors */
     --header-color: black;
