@@ -1,4 +1,5 @@
 import DarkMode from "~/components/dark-mode/dark-mode";
+import Button from "~/components/button/button";
 import { component$ } from "@builder.io/qwik";
 import Image from "~/media/logo.png?jsx";
 import { cn } from "~/common/utils";
@@ -9,7 +10,13 @@ export default component$(() => {
       <div class="w-14 h-14">
         <Image />
       </div>
-      <DarkMode />
+      <div class="flex gap-5 items-center">
+        <Button variant="outline" size="md">
+          Sign In
+        </Button>
+        <Button size="md">Sign Up</Button>
+        <DarkMode />
+      </div>
     </div>
   );
 });
