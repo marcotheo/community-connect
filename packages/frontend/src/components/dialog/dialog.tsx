@@ -13,7 +13,7 @@ import {
 import Button, { ButtonProps } from "../button/button";
 import { cn } from "~/common/utils";
 
-interface DialogProps extends HTMLAttributes<HTMLDialogElement> {
+interface DialogProps extends HTMLAttributes<HTMLDivElement> {
   size?: "lg" | "md" | "sm";
 }
 
@@ -21,9 +21,9 @@ export const DialogContext = createContextId<Signal<boolean>>(
   "dialog.open-context",
 );
 
-export default component$<DialogProps>(({ size = "lg", ...props }) => {
+export default component$<DialogProps>(({ size = "sm", ...props }) => {
   const open = useSignal<boolean | null>(null);
-  const dialogRef = useSignal<HTMLDialogElement>();
+  const dialogRef = useSignal<HTMLDivElement>();
 
   useContextProvider(DialogContext, open);
 
@@ -52,29 +52,30 @@ export default component$<DialogProps>(({ size = "lg", ...props }) => {
 
       <div
         class={cn(
-          "absolute inset-0",
-          open.value ? "bg-[rgba(0,0,0,0.8)] z-40" : "bg-transparent z-[-10]",
+          "fixed inset-0 w-full top-0 left-0",
+          open.value ? "bg-[rgba(0,0,0,0.5)] z-50" : "bg-transparent z-[-10]",
         )}
       ></div>
 
-      <dialog
+      <div
         {...props}
         ref={dialogRef}
-        open
         class={cn(
-          props.class,
-          "w-[90%] p-5 top-[50%]",
+          "fixed top-0 bottom-0 left-0 right-0 m-auto",
+          "w-fit h-fit min-w-[90%] p-5",
           "bg-surface rounded-md shadow-lg",
+          "text-text",
           sizes[size],
           open.value === null
             ? "hidden"
             : open.value
-              ? "animate-fade-in-scale z-50"
+              ? "animate-fade-in-scale"
               : "animate-fade-out-scale",
+          props.class,
         )}
       >
         <Slot />
-      </dialog>
+      </div>
     </>
   );
 });
