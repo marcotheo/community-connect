@@ -15,7 +15,7 @@ import { cn } from "~/common/utils";
 
 const MobileMenu = component$(() => {
   return (
-    <Drawer defaultValue>
+    <Drawer>
       <HamburgerIcon q:slot="trigger" />
 
       <div q:slot="header">
