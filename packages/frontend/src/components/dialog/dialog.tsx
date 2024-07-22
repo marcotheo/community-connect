@@ -17,7 +17,7 @@ interface DialogProps extends HTMLAttributes<HTMLDivElement> {
   size?: "lg" | "md" | "sm";
 }
 
-export const DialogContext = createContextId<Signal<boolean>>(
+export const DialogContext = createContextId<Signal<boolean | null>>(
   "dialog.open-context",
 );
 
