@@ -29,7 +29,6 @@ export default component$(() => {
         <input
           type="checkbox"
           id="check"
-          checked
           class={cn(
             "peer absolute z-[60] bg-transparent",
             "appearance-none focus:outline-none",
