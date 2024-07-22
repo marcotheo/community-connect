@@ -1,3 +1,4 @@
+import Checkbox from "~/components/checkbox/checkbox";
 import { DocumentHead } from "@builder.io/qwik-city";
 import Heading from "~/components/heading/heading";
 import Button from "~/components/button/button";
@@ -15,11 +16,13 @@ export default component$(() => {
           <Input type="password" label="Password" variant="filled" />
           <Input type="password" label="Confirm Password" variant="filled" />
 
-          <p>
-            By registering, you agree to the processing of your personal data by
-            Genesis Oppurtunities as described in the{" "}
-            <span class="text-primary">Privacy Policy</span>.{" "}
-          </p>
+          <Checkbox>
+            <p>
+              By registering, you agree to the processing of your personal data
+              by Genesis Oppurtunities as described in the{" "}
+              <span class="text-primary">Privacy Policy</span>.{" "}
+            </p>
+          </Checkbox>
 
           <Button>Sign up</Button>
         </div>
