@@ -8,8 +8,14 @@ import { cn } from "~/common/utils";
 export default component$(() => {
   return (
     <div class={cn("flex justify-between items-center", "w-full py-5")}>
-      <div class="w-14 h-14">
-        <Image />
+      <div class="flex gap-3">
+        <div class="w-14 h-14">
+          <Image />
+        </div>
+        <div class="flex flex-col justify-center font-bold italic text-xl">
+          <p class="">Genesis</p>
+          <p class="">Oppurtunities</p>
+        </div>
       </div>
       <div class="flex gap-5 items-center">
         <Link href="/sign-in">
