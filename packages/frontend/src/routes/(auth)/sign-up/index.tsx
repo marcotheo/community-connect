@@ -9,7 +9,7 @@ import { cn } from "~/common/utils";
 export default component$(() => {
   return (
     <div class="flex h-full w-full justify-center">
-      <div class={cn("flex flex-col gap-5", "w-[500px] mt-[70px]")}>
+      <div class={cn("flex flex-col gap-5", "w-[500px] md:mt-[70px]")}>
         <Heading>Sign Up</Heading>
         <div class=" flex flex-col gap-5">
           <Input label="Email" variant="filled" />
