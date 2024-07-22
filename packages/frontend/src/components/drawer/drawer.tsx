@@ -1,18 +1,31 @@
 import {
   $,
   component$,
+  createContextId,
   HTMLAttributes,
+  Signal,
   Slot,
+  useContext,
+  useContextProvider,
   useSignal,
 } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
 import Button from "../button/button";
 import { cn } from "~/common/utils";
 
-interface DrawerProps extends HTMLAttributes<HTMLDivElement> {}
+interface DrawerProps extends HTMLAttributes<HTMLDivElement> {
+  defaultValue?: boolean;
+}
 
-export default component$<DrawerProps>(({ ...props }) => {
-  const open = useSignal(false);
+export const DrawerContext = createContextId<Signal<boolean | null>>(
+  "drawer.open-context",
+);
+
+export default component$<DrawerProps>(({ defaultValue = false, ...props }) => {
+  const open = useSignal(defaultValue);
   const menuRef = useSignal<HTMLDivElement>();
+
+  useContextProvider(DrawerContext, open);
 
   const onToggle = $(() => {
     open.value = !open.value;
@@ -20,7 +33,7 @@ export default component$<DrawerProps>(({ ...props }) => {
 
   return (
     <>
-      <Button class="sm:hidden px-2" variant="ghost" onClick$={onToggle}>
+      <Button class="md:hidden px-2" variant="ghost" onClick$={onToggle}>
         <Slot name="trigger" />
       </Button>
 
@@ -30,18 +43,11 @@ export default component$<DrawerProps>(({ ...props }) => {
         class={cn(
           "absolute z-[1111] bg-surface",
           "top-0 bottom-0 left-0",
-          "sm:hidden overflow-hidden",
+          "md:hidden overflow-hidden",
           "duration-300 ease-out",
           open.value ? "w-72" : "w-0",
         )}
       >
-        <div class="p-5 bg-background">
-          <Slot name="header" />
-        </div>
-
-        <div class="p-5">
-          <Slot />
-        </div>
         <Button
           onClick$={onToggle}
           variant="ghost"
@@ -52,6 +58,14 @@ export default component$<DrawerProps>(({ ...props }) => {
         >
           X
         </Button>
+
+        <div class="p-5 bg-background">
+          <Slot name="header" />
+        </div>
+
+        <div class="p-5">
+          <Slot />
+        </div>
       </div>
 
       <div
@@ -62,5 +76,31 @@ export default component$<DrawerProps>(({ ...props }) => {
         )}
       ></div>
     </>
+  );
+});
+
+export const DrawerLink = component$<{ href: string }>(({ href }) => {
+  const drawerCtx = useContext(DrawerContext);
+
+  const onTrigger = $(() => {
+    drawerCtx.value = !drawerCtx.value;
+  });
+
+  return (
+    <div>
+      <Link href={href} onClick$={onTrigger}>
+        <div
+          class={cn(
+            "flex gap-3 items-center",
+            "w-full p-2",
+            "duration-300",
+            "cursor-pointer hover:bg-zinc-700 rounded-md",
+            "whitespace-nowrap text-lg",
+          )}
+        >
+          <Slot />
+        </div>
+      </Link>
+    </div>
   );
 });
