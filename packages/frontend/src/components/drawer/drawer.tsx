@@ -33,7 +33,12 @@ export default component$<DrawerProps>(({ defaultValue = false, ...props }) => {
 
   return (
     <>
-      <Button class="md:hidden px-2" variant="ghost" onClick$={onToggle}>
+      <Button
+        class="md:hidden px-2"
+        variant="ghost"
+        onClick$={onToggle}
+        aria-label="drawer-open"
+      >
         <Slot name="trigger" />
       </Button>
 

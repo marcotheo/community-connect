@@ -21,7 +21,7 @@ const MobileMenu = component$(() => {
       <div q:slot="header">
         <div class="flex gap-3">
           <div class="w-14 h-14">
-            <Image />
+            <Image alt="Logo" />
           </div>
           <div class="flex flex-col justify-center font-bold italic text-xl">
             <p>Genesis</p>
@@ -54,7 +54,7 @@ export default component$(() => {
     <div class={cn("flex justify-between items-center", "w-full py-5")}>
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 sm:w-14 sm:h-14">
-          <Image />
+          <Image alt="Logo" />
         </div>
         <div class="flex flex-col justify-center font-bold italic text-base sm:text-xl">
           <p>Genesis</p>

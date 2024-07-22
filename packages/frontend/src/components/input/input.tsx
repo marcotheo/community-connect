@@ -54,6 +54,7 @@ export default component$<InputProps>(
           <input
             {...props}
             placeholder=""
+            aria-label={label}
             class={cn(
               "peer z-[10] w-full",
               "font-primary",
