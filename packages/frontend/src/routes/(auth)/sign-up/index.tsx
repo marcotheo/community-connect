@@ -16,7 +16,7 @@ export default component$(() => {
           <Input type="password" label="Password" variant="filled" />
           <Input type="password" label="Confirm Password" variant="filled" />
 
-          <Checkbox>
+          <Checkbox name="consent">
             <p class="max-sm:text-sm">
               By registering, you agree to the processing of your personal data
               by Genesis Oppurtunities as described in the{" "}

@@ -22,13 +22,18 @@ const CheckIcon = component$<{
   );
 });
 
-export default component$(() => {
+interface CheckboxProps {
+  name: string;
+}
+
+export default component$<CheckboxProps>(({ name }) => {
   return (
     <div>
       <div class="flex gap-3 items-center group relative">
         <input
           type="checkbox"
-          id="check"
+          id={name}
+          name={name}
           class={cn(
             "peer absolute z-[60] bg-transparent",
             "appearance-none focus:outline-none",
@@ -61,7 +66,7 @@ export default component$(() => {
           <CheckIcon class="opacity-0" />
         </div>
 
-        <label>
+        <label for={name}>
           <Slot />
         </label>
       </div>
