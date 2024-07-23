@@ -1,6 +1,7 @@
 /// <reference path="./.sst/platform/config.d.ts" />
 
-import { frontend } from "./infra/frontend";
+import { frontend_edge } from "./infra/frontend-edge";
+// import { frontend } from "./infra/frontend";
 
 export default $config({
   app(input) {
@@ -17,7 +18,7 @@ export default $config({
     };
   },
   async run() {
-    const result = frontend();
+    const result = frontend_edge();
 
     return {
       ...result,
