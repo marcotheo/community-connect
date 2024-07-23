@@ -42,3 +42,6 @@ lerna-debug.log*
 
 # AWS-lambda
 .serverless
+
+# Vercel
+.vercel
