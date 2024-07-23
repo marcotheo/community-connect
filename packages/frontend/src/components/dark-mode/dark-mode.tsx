@@ -6,6 +6,7 @@ export default component$(() => {
 
   return (
     <button
+      aria-label="dark-mode-toggle"
       class={cn(
         "p-3 rounded-md cursor-pointer",
         "transition-[background-color] duration-150 ease-linear text-text",
