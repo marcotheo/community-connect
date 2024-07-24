@@ -1,6 +1,5 @@
 /// <reference path="./.sst/platform/config.d.ts" />
 import { cloudflare_pages } from "./infra/cloudflare-pages";
-// import { frontend } from "./infra/frontend";
 
 export default $config({
   app(input) {
