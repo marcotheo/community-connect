@@ -1,6 +1,6 @@
+import Image from "~/assets/images/logo.png?jsx";
 import { component$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
-import Image from "~/media/logo.png?jsx";
 
 import {
   HamburgerIcon,
