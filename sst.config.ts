@@ -1,6 +1,5 @@
 /// <reference path="./.sst/platform/config.d.ts" />
-
-import { frontend_edge } from "./infra/frontend-edge";
+import { cloudflare_pages } from "./infra/cloudflare-pages";
 // import { frontend } from "./infra/frontend";
 
 export default $config({
@@ -14,14 +13,16 @@ export default $config({
           profile: process.env.PROFILE,
           region: process.env.AWS_REGION as any,
         },
+        cloudflare: true,
       },
     };
   },
   async run() {
-    const result = frontend_edge();
+    const result = cloudflare_pages();
 
     return {
-      ...result,
+      name: result?.name,
+      domain: result?.domains[0],
     };
   },
 });
