@@ -1,6 +1,7 @@
 export const images_cdn = () => {
   const bucket = new aws.s3.Bucket("AssetsBucket", {
     acl: "private",
+    forceDestroy: true,
   });
 
   // Create a CloudFront Origin Access Identity
@@ -9,26 +10,27 @@ export const images_cdn = () => {
     {}
   );
 
-  // Configure the S3 bucket policy to allow CloudFront to read the objects
+  // Create the policy document
+  const bucketPolicyDocument = aws.iam.getPolicyDocumentOutput({
+    statements: [
+      {
+        effect: "Allow",
+        principals: [
+          {
+            type: "AWS",
+            identifiers: [oai.iamArn],
+          },
+        ],
+        actions: ["s3:GetObject"],
+        resources: [bucket.arn.apply((arn) => `${arn}/*`)],
+      },
+    ],
+  });
+
+  // Attach the policy to the bucket
   new aws.s3.BucketPolicy("AssetsBucketPolicy", {
-    bucket: bucket.bucket,
-    policy: $util
-      .all([bucket.bucket, oai.s3CanonicalUserId])
-      .apply(([bucketName, canonicalUserId]) =>
-        JSON.stringify({
-          Version: "2012-10-17",
-          Statement: [
-            {
-              Effect: "Allow",
-              Principal: {
-                CanonicalUser: canonicalUserId,
-              },
-              Action: "s3:GetObject",
-              Resource: `arn:aws:s3:::${bucketName}/*`,
-            },
-          ],
-        })
-      ),
+    bucket: bucket.id,
+    policy: bucketPolicyDocument.json,
   });
 
   // Create a CloudFront distribution
