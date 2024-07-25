@@ -1,3 +1,5 @@
+import { execSync } from "child_process";
+
 export const images_cdn = () => {
   const bucket = new aws.s3.Bucket("AssetsBucket", {
     acl: "private",
@@ -73,6 +75,32 @@ export const images_cdn = () => {
       },
     }
   );
+
+  bucket.bucket.apply((v) => {
+    console.log("Running Images-Optimization Scripts ...");
+
+    process.env.ASSETS_BUCKET = v;
+
+    new sst.Resource("ScriptLogoOptimizer", {
+      execSync: execSync(
+        `node ${process.cwd()}/packages/scripts/src/logo-optimizer.js`,
+        {
+          stdio: "inherit",
+        }
+      ),
+    });
+
+    new sst.Resource("ScriptImagesOptimizer", {
+      execSync: execSync(
+        `node ${process.cwd()}/packages/scripts/src/image-optimizer.js`,
+        {
+          stdio: "inherit",
+        }
+      ),
+    });
+
+    console.log("Images-Optimization Scripts Done!");
+  });
 
   return {
     AssetsBucket: bucket.bucket,

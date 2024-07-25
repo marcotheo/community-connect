@@ -10,18 +10,23 @@ const s3 = new S3Client();
 const generateWebPImages = async (inputDir, outputDir, sizes, dprs) => {
   console.log("Optimizing Regular Images ...");
 
+  const existingImages = new Map();
+
   const files = fs.readdirSync(inputDir);
 
   for (const file of files) {
     for (const size of sizes) {
       for (const dpr of dprs) {
         const scaledSize = size * dpr;
-
+        const fileName = `${path.parse(file).name}-${size}w-${dpr}x.webp`;
         const inputPath = path.join(inputDir, file);
-        const outputPath = path.join(
-          outputDir,
-          `${path.parse(file).name}-${size}w-${dpr}x.webp`
-        );
+        const outputPath = path.join(outputDir, fileName);
+
+        // Check if the file already exists
+        if (fs.existsSync(outputPath)) {
+          existingImages.set(fileName, 1);
+          continue;
+        }
 
         await sharp(inputPath)
           .resize(scaledSize)
@@ -31,6 +36,8 @@ const generateWebPImages = async (inputDir, outputDir, sizes, dprs) => {
       }
     }
   }
+
+  return existingImages;
 };
 
 // Function to upload files to S3
@@ -84,7 +91,12 @@ const handler = async () => {
   const dprs = [1, 2];
 
   try {
-    await generateWebPImages(inputDir, outputDir, sizes, dprs);
+    const skipImages = await generateWebPImages(
+      inputDir,
+      outputDir,
+      sizes,
+      dprs
+    );
     const files = fs.readdirSync(outputDir);
 
     console.log(
@@ -92,12 +104,19 @@ const handler = async () => {
     );
 
     for (const file of files) {
+      if (!!skipImages.get(file)) continue;
+
       const filePath = path.join(outputDir, file);
       const key = `${path.parse(file).name.split("-")[0]}/${file}`;
       await uploadFileToS3(filePath, key);
     }
 
-    console.log("All Regular Images generated and uploaded successfully!");
+    console.log(
+      "All Regular Images generated and uploaded successfully!",
+      skipImages.size > 0
+        ? `(Skipped ${skipImages.size} since it was already processed)`
+        : ""
+    );
   } catch (err) {
     console.log("An error occured at Regular Image Optimizer", err);
   }

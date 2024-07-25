@@ -9,16 +9,28 @@ const s3 = new S3Client();
 const generateWebPImages = async (inputPath, outputDir, sizes, dprs) => {
   console.log("Optimizing Logo Image ...");
 
+  const existingImages = new Map();
+
   for (const size of sizes) {
     for (const dpr of dprs) {
       const scaledSize = size * dpr;
-      const outputPath = path.join(outputDir, `logo-${size}w-${dpr}x.webp`);
+      const fileName = `logo-${size}w-${dpr}x.webp`;
+      const outputPath = path.join(outputDir, fileName);
+
+      // Check if the file already exists
+      if (fs.existsSync(outputPath)) {
+        existingImages.set(fileName, 1);
+        continue;
+      }
+
       await sharp(inputPath)
         .resize(scaledSize)
         .webp({ quality: 80 })
         .toFile(outputPath);
     }
   }
+
+  return existingImages;
 };
 
 // Function to upload files to S3
@@ -61,7 +73,12 @@ const handler = async () => {
 
   try {
     const inputPath = path.join(inputDir, logoFilename);
-    await generateWebPImages(inputPath, outputDir, sizes, dprs);
+    const skipImages = await generateWebPImages(
+      inputPath,
+      outputDir,
+      sizes,
+      dprs
+    );
     const files = fs.readdirSync(outputDir);
 
     console.log(
@@ -69,12 +86,19 @@ const handler = async () => {
     );
 
     for (const file of files) {
+      if (!!skipImages.get(file)) continue;
+
       const filePath = path.join(outputDir, file);
       const key = `logos/${file}`;
       await uploadFileToS3(filePath, key);
     }
 
-    console.log("All Logo Images generated and uploaded successfully!");
+    console.log(
+      "All Logo Images generated and uploaded successfully!",
+      skipImages.size > 0
+        ? `(Skipped ${skipImages.size} since it was already processed)`
+        : ""
+    );
   } catch (err) {
     console.log("An error occured in Logo Image Optimizer", err);
   }
