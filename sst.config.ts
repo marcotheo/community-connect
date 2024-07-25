@@ -1,4 +1,5 @@
 /// <reference path="./.sst/platform/config.d.ts" />
+import { images_cdn } from "./infra/images-cdn";
 import { cloudflare_pages } from "./infra/cloudflare-pages";
 
 export default $config({
@@ -9,7 +10,7 @@ export default $config({
       home: "aws",
       providers: {
         aws: {
-          profile: process.env.PROFILE,
+          profile: process.env.AWS_PROFILE,
           region: process.env.AWS_REGION as any,
         },
         cloudflare: true,
@@ -17,11 +18,31 @@ export default $config({
     };
   },
   async run() {
-    const result = cloudflare_pages();
+    let output = {};
 
-    return {
-      name: result?.name,
-      domain: result?.domains[0],
+    if (!process.env.APP_NAME) {
+      console.error("must define APP_NAME env variable");
+      return;
+    }
+
+    const cdnInfra = images_cdn();
+
+    output = {
+      ...cdnInfra,
     };
+
+    if (
+      process.env.NODE_ENV &&
+      ["production", "preview"].includes(process.env.NODE_ENV)
+    ) {
+      const cloudflareResults = cloudflare_pages();
+
+      output = {
+        ...output,
+        cloudflareResults,
+      };
+    }
+
+    return output;
   },
 });

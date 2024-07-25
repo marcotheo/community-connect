@@ -76,5 +76,7 @@ export const cloudflare_pages = () => {
     console.log("Initial deployment triggered:", result);
   });
 
-  return app;
+  return {
+    CloudFlareDomain: app.domains[0],
+  };
 };
