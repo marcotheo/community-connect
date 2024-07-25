@@ -75,7 +75,7 @@ export const images_cdn = () => {
   );
 
   return {
-    assetsBucket: bucket.bucket,
-    distribution: distribution.domainName,
+    AssetsBucket: bucket.bucket,
+    AssetsDistribution: distribution.domainName,
   };
 };
