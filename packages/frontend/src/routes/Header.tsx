@@ -1,4 +1,3 @@
-import Image from "~/assets/images/logo.png?jsx";
 import { component$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 
@@ -8,6 +7,7 @@ import {
   SignUpIcon,
 } from "~/components/icons/icons";
 import Drawer, { DrawerLink } from "~/components/drawer/drawer";
+import LogoImage from "~/components/logo-image/logo-image";
 import DarkMode from "~/components/dark-mode/dark-mode";
 import Heading from "~/components/heading/heading";
 import Button from "~/components/button/button";
@@ -21,7 +21,12 @@ const MobileMenu = component$(() => {
       <div q:slot="header">
         <div class="flex gap-3">
           <div class="w-14 h-14">
-            <Image alt="Logo" />
+            <LogoImage
+              alt="Genesis Oppurtinities Logo"
+              filename="logo"
+              height={100}
+              width={100}
+            />
           </div>
           <div class="flex flex-col justify-center font-bold italic text-xl">
             <p>Genesis</p>
@@ -54,7 +59,12 @@ export default component$(() => {
     <div class={cn("flex justify-between items-center", "w-full py-5")}>
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 sm:w-14 sm:h-14">
-          <Image alt="Logo" />
+          <LogoImage
+            alt="Genesis Oppurtinities Logo"
+            filename="logo"
+            height={100}
+            width={100}
+          />
         </div>
         <div class="flex flex-col justify-center font-bold italic text-base sm:text-xl">
           <p>Genesis</p>

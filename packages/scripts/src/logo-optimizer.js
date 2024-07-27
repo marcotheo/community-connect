@@ -89,7 +89,7 @@ const handler = async () => {
       if (!!skipImages.get(file)) continue;
 
       const filePath = path.join(outputDir, file);
-      const key = `logos/${file}`;
+      const key = `logo/${file}`;
       await uploadFileToS3(filePath, key);
     }
 
