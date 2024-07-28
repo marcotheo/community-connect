@@ -38,6 +38,7 @@
     "@typescript-eslint/parser": "^7.7.1",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "eslint-plugin-qwik": "^1.7.1",
     "postcss": "^8.4.39",

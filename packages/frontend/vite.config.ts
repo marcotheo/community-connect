@@ -7,6 +7,9 @@ import { qwikCity } from "@builder.io/qwik-city/vite";
 import { defineConfig, type UserConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import pkg from "./package.json";
+import dotenv from "dotenv";
+
+dotenv.config({ path: `.dev.vars` });
 
 type PkgDep = Record<string, string>;
 const { dependencies = {}, devDependencies = {} } = pkg as any as {
@@ -24,7 +27,15 @@ export default defineConfig(({ command, mode }): UserConfig => {
     css: {
       postcss: "./postcss.config.js",
     },
+
     plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
+
+    define: {
+      "process.env": {
+        CDN_URL: process.env.CDN_URL,
+      },
+    },
+
     // This tells Vite which dependencies to pre-build in dev mode.
     optimizeDeps: {
       // Put problematic deps that break bundling here, mostly those with binaries.
