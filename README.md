@@ -22,3 +22,9 @@ main entry file is sst.config.ts
 - GITHUB_OWNER=value
 - GITHUB_REPO_NAME=value
 - GITHUB_BRANCH=value
+
+### Frontend env variables
+
+create .env & .dev.vars (for cloudflare pages local dev)
+
+- CDN_URL = cloudfront url refer to sst outputs (created by /infra/images-cdn.ts)
