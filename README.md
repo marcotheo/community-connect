@@ -6,3 +6,19 @@ main entry file is sst.config.ts
 
 - cloudflare pages (default)
 - frontend lambda
+
+### root environment variables
+
+#### BASIC STUFF
+
+- AWS_PROFILE=value
+- AWS_REGION=value
+- APP_NAME=value
+
+#### CLOUDFLARE
+
+CLOUDFLARE_DEFAULT_ACCOUNT_ID=value
+CLOUDFLARE_API_TOKEN=value
+GITHUB_OWNER=value
+GITHUB_REPO_NAME=value
+GITHUB_BRANCH=value
