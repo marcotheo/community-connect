@@ -9,13 +9,13 @@ main entry file is sst.config.ts
 
 ### root environment variables
 
-#### BASIC STUFF
+##### BASIC ENV
 
 - AWS_PROFILE=value
 - AWS_REGION=value
 - APP_NAME=value
 
-#### CLOUDFLARE
+##### CLOUDFLARE
 
 CLOUDFLARE_DEFAULT_ACCOUNT_ID=value
 CLOUDFLARE_API_TOKEN=value
